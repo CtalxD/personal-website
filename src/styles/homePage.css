@@ -1,0 +1,597 @@
+/* Premium Masculine Dark Navbar CSS */
+:root {
+  /* Masculine Dark Color Palette */
+  --primary-color: #0ea5e9;
+  --secondary-color: #0284c7;
+  --accent-color: #06b6d4;
+  --tertiary-color: #8b5cf6;
+  --danger-color: #ef4444;
+  
+  /* Dark Theme Colors */
+  --dark-primary: #020617;
+  --dark-secondary: #0f172a;
+  --dark-tertiary: #1e293b;
+  --dark-quaternary: #334155;
+  
+  /* Text Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-accent: #0ea5e9;
+  
+  /* Background Colors */
+  --bg-primary: rgba(2, 6, 23, 0.95);
+  --bg-secondary: rgba(15, 23, 42, 0.9);
+  --bg-glass: rgba(30, 41, 59, 0.3);
+  --bg-hover: rgba(14, 165, 233, 0.1);
+  --bg-active: rgba(14, 165, 233, 0.2);
+  
+  /* Masculine Gradients */
+  --gradient-primary: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+  --gradient-secondary: linear-gradient(135deg, #0ea5e9, #0284c7, #06b6d4);
+  --gradient-accent: linear-gradient(135deg, #1e293b, #334155, #475569);
+  --gradient-text: linear-gradient(135deg, #f8fafc, #cbd5e1, #94a3b8);
+  --gradient-hover: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+  
+  /* Professional Shadows */
+  --shadow-primary: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 40px rgba(14, 165, 233, 0.4);
+  --shadow-hover: 0 35px 60px -12px rgba(0, 0, 0, 0.6);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Smooth Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-sharp: all 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Global Dark Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--gradient-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text-primary);
+}
+
+/* Masculine Animated Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.1) 0%, transparent 50%);
+  animation: darkBackgroundPulse 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes darkBackgroundPulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+/* Premium Dark Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-primary);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+  z-index: 1000;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-primary);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-secondary);
+  opacity: 0.03;
+  transition: var(--transition-smooth);
+}
+
+.navbar:hover::before {
+  opacity: 0.08;
+}
+
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.5), transparent);
+  opacity: 0.6;
+}
+
+/* Enhanced Scrolled State */
+.navbar.scrolled {
+  background: rgba(2, 6, 23, 0.9);
+  padding: 0.5rem 0;
+  box-shadow: var(--shadow-hover);
+  border-bottom-color: rgba(14, 165, 233, 0.2);
+}
+
+.navbar.scrolled::before {
+  opacity: 0.1;
+}
+
+/* Navbar Container - Updated for centered nav with download button */
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Masculine Brand Logo - Positioned absolutely to the left */
+.navbar-brand {
+  position: absolute;
+  left: 2rem;
+  font-size: 2rem;
+  font-weight: 900;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
+  transition: var(--transition-bounce);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.navbar-brand::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 30px;
+  background: var(--gradient-secondary);
+  opacity: 0;
+  transition: var(--transition-smooth);
+  border-radius: 2px;
+}
+
+.navbar-brand:hover::before {
+  opacity: 1;
+  animation: brandPulse 2s ease-in-out infinite;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 8px 25px rgba(14, 165, 233, 0.4));
+}
+
+@keyframes brandPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+    transform: scaleY(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(14, 165, 233, 0.9);
+    transform: scaleY(1.1);
+  }
+}
+
+/* Download CV Button - Positioned absolutely to the right */
+.download-cv-btn {
+  position: absolute;
+  right: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--gradient-secondary);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-glow);
+  animation: slideInFromRight 0.8s ease-out forwards;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px) rotateY(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+}
+
+/* Download CV Button Glass Effect */
+.download-cv-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(14, 165, 233, 0.1));
+  opacity: 0;
+  transition: var(--transition-smooth);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* Download CV Button Hover Effects */
+.download-cv-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: var(--shadow-hover), 0 0 30px rgba(14, 165, 233, 0.6);
+  border-color: rgba(14, 165, 233, 0.6);
+  background: var(--gradient-hover);
+}
+
+.download-cv-btn:hover::before {
+  opacity: 1;
+}
+
+/* Download CV Button Active State */
+.download-cv-btn:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Download Icon */
+.download-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  transition: var(--transition-smooth);
+}
+
+.download-cv-btn:hover .download-icon {
+  animation: downloadBounce 1s ease-in-out infinite;
+}
+
+@keyframes downloadBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Navigation Links Container - Centered */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual Navigation Items */
+.nav-links li {
+  position: relative;
+  animation: slideInFromTop 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.nav-links li:nth-child(1) { animation-delay: 0.1s; }
+.nav-links li:nth-child(2) { animation-delay: 0.2s; }
+.nav-links li:nth-child(3) { animation-delay: 0.3s; }
+.nav-links li:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* Masculine Navigation Links */
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+/* Dark Glass Effect */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-glass);
+  opacity: 0;
+  transition: var(--transition-smooth);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* Sharp Accent Line */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-secondary);
+  transition: var(--transition-sharp);
+}
+
+/* Masculine Hover Effects */
+.nav-link:hover {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  border-color: rgba(14, 165, 233, 0.4);
+  background: var(--bg-hover);
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Active State - Bold and Assertive */
+.nav-link.active {
+  color: var(--text-primary);
+  background: var(--bg-active);
+  border-color: rgba(14, 165, 233, 0.6);
+  box-shadow: var(--shadow-glow), var(--shadow-inset);
+  font-weight: 700;
+}
+
+.nav-link.active::before {
+  opacity: 1;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  height: 3px;
+}
+
+/* Power Effects */
+.nav-link:hover {
+  position: relative;
+}
+
+.nav-link:hover::before {
+  background: linear-gradient(135deg, var(--bg-glass), rgba(14, 165, 233, 0.1));
+  animation: powerPulse 2s ease-in-out infinite;
+}
+
+@keyframes powerPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .navbar-brand {
+    left: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .download-cv-btn {
+    right: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .nav-links {
+    gap: 0;
+  }
+  
+  .nav-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+  
+  .download-cv-btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .download-cv-btn .download-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    justify-content: center;
+  }
+  
+  .navbar-brand {
+    position: static;
+    font-size: 1.75rem;
+  }
+  
+  .download-cv-btn {
+    position: static;
+    order: 3;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    order: 2;
+  }
+  
+  .nav-link {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 1rem 0.75rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .download-cv-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+  }
+}
+
+/* Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-hover);
+}
+
+/* Loading Animation */
+@keyframes darkShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.loading-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+  animation: darkShimmer 2s ease-in-out infinite;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus States */
+.nav-link:focus,
+.download-cv-btn:focus {
+  outline: 2px solid rgba(14, 165, 233, 0.8);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --bg-primary: #000000;
+    --primary-color: #00bfff;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .navbar {
+    position: static;
+    background: white;
+    color: black;
+    box-shadow: none;
+  }
+  
+  .nav-link,
+  .download-cv-btn {
+    color: black;
+  }
+}
